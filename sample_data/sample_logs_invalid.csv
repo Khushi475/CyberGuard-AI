@@ -1,0 +1,6 @@
+timestamp,source_ip,destination_ip,source_port,destination_port,protocol,bytes,packets,failed_logins,request_count,duration,event_type
+2026-02-01 10:00:00,10.0.1.42,10.0.3.10,51200,443,HTTPS,120000,150,0,10,30,web_request
+2026-02-01 10:05:00,NOT_AN_IP,10.0.3.10,51201,443,HTTPS,90000,120,0,8,25,web_request
+2026-02-01 10:10:00,10.0.1.43,10.0.3.10,51202,99999,HTTPS,80000,100,0,7,20,web_request
+2026-02-01 10:15:00,10.0.1.44,10.0.3.10,51203,443,TELEPATHY,70000,90,0,6,18,web_request
+2026-02-01 10:20:00,10.0.1.45,10.0.3.10,51204,443,HTTPS,abc,80,0,5,15,web_request

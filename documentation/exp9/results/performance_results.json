@@ -1,0 +1,102 @@
+{
+  "executed_at": "2026-09-22 11:06:04",
+  "target": "http://127.0.0.1:5000",
+  "environment": "Windows 11, Python 3.10, Flask development server, SQLite",
+  "thread_group": {
+    "users": 50,
+    "ramp_up_seconds": 10,
+    "loops": 10,
+    "think_time_ms": [
+      100,
+      400
+    ]
+  },
+  "duration_seconds": 39.29,
+  "total_samples": 2500,
+  "per_endpoint": [
+    {
+      "label": "GET /api/health",
+      "samples": 500,
+      "average_ms": 266.34,
+      "median_ms": 281.93,
+      "p90_ms": 388.02,
+      "p95_ms": 438.89,
+      "p99_ms": 603.27,
+      "min_ms": 4.72,
+      "max_ms": 836.54,
+      "error_pct": 0.0,
+      "throughput_per_sec": 12.73,
+      "kb_per_sec": 6.31
+    },
+    {
+      "label": "GET /api/dashboard/stats",
+      "samples": 500,
+      "average_ms": 788.02,
+      "median_ms": 796.63,
+      "p90_ms": 971.09,
+      "p95_ms": 1051.91,
+      "p99_ms": 1243.46,
+      "min_ms": 341.3,
+      "max_ms": 1606.8,
+      "error_pct": 0.0,
+      "throughput_per_sec": 12.73,
+      "kb_per_sec": 279.75
+    },
+    {
+      "label": "GET /api/alerts",
+      "samples": 500,
+      "average_ms": 417.56,
+      "median_ms": 422.75,
+      "p90_ms": 551.91,
+      "p95_ms": 638.06,
+      "p99_ms": 867.18,
+      "min_ms": 25.2,
+      "max_ms": 1682.63,
+      "error_pct": 0.0,
+      "throughput_per_sec": 12.73,
+      "kb_per_sec": 318.29
+    },
+    {
+      "label": "GET /api/incidents",
+      "samples": 500,
+      "average_ms": 646.47,
+      "median_ms": 654.6,
+      "p90_ms": 836.76,
+      "p95_ms": 977.97,
+      "p99_ms": 1151.32,
+      "min_ms": 28.42,
+      "max_ms": 1274.0,
+      "error_pct": 0.0,
+      "throughput_per_sec": 12.73,
+      "kb_per_sec": 229.07
+    },
+    {
+      "label": "POST /api/events/analyze",
+      "samples": 500,
+      "average_ms": 392.99,
+      "median_ms": 393.43,
+      "p90_ms": 592.03,
+      "p95_ms": 666.41,
+      "p99_ms": 829.42,
+      "min_ms": 18.2,
+      "max_ms": 1095.89,
+      "error_pct": 0.0,
+      "throughput_per_sec": 12.73,
+      "kb_per_sec": 23.33
+    }
+  ],
+  "total": {
+    "label": "TOTAL",
+    "samples": 2500,
+    "average_ms": 502.28,
+    "median_ms": 462.38,
+    "p90_ms": 835.99,
+    "p95_ms": 921.06,
+    "p99_ms": 1111.28,
+    "min_ms": 4.72,
+    "max_ms": 1682.63,
+    "error_pct": 0.0,
+    "throughput_per_sec": 63.63,
+    "kb_per_sec": 856.76
+  }
+}

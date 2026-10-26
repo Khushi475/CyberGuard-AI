@@ -1,0 +1,949 @@
+{
+  "id": "791f4dbc-e71d-4801-8225-4ff065186dd3",
+  "version": "2.0",
+  "name": "CyberGuard AI - Functional Test Suite",
+  "url": "http://localhost:5173",
+  "tests": [
+    {
+      "id": "11100092-4af5-4b64-bac5-be310b3f35d9",
+      "name": "TC-01 Valid login is accepted",
+      "commands": [
+        {
+          "id": "18a239d3-24ef-4e3b-b9fa-c3fb2da1523b",
+          "comment": "Navigate to the login page",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "d97f5cf4-8cf3-41b0-96e9-dfcac6bb2f16",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ae3df46d-6afd-4e57-88ff-01656983359b",
+          "comment": "Enter the analyst email",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "0d0f592d-9365-4a32-88c7-adc93cf25e98",
+          "comment": "Enter the password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "admin123"
+        },
+        {
+          "id": "0ed89d66-9761-46ea-ba6d-f06b54fe205f",
+          "comment": "Submit the sign-in form",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9a9e135e-a7a0-40a7-a4e2-56a4c2861952",
+          "comment": "Wait for the console to load",
+          "command": "waitForElementPresent",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "bc60aa88-7613-4970-a576-2c8f1b2c3299",
+          "comment": "Dashboard heading confirms a successful sign-in",
+          "command": "assertText",
+          "target": "css=h1",
+          "targets": [],
+          "value": "Security Overview"
+        },
+        {
+          "id": "fb0bbeac-175c-428f-a612-f16aff62c46f",
+          "comment": "Sidebar navigation is rendered",
+          "command": "assertElementPresent",
+          "target": "css=nav",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "67c29900-953e-4cab-ab89-e4e196319e7b",
+      "name": "TC-02 Invalid password is rejected",
+      "commands": [
+        {
+          "id": "a8bf28c2-7ce5-434d-b696-4146fbb20d93",
+          "comment": "",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "b305359a-ffe8-4e60-8a5e-40d0a0d5ecee",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4f264c16-ccf2-48be-a32b-06a7ff54bcce",
+          "comment": "",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "f47ceb02-d78d-47a0-89e3-83fc0f538e2b",
+          "comment": "Deliberately wrong password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "wrongpassword"
+        },
+        {
+          "id": "c7c47067-98bc-4d3d-bbc4-98fac6cfdbfe",
+          "comment": "",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "88309f38-3066-4c89-90b4-a8de8a5fe4f6",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "css=.text-danger, .border-danger\\/40",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "3f033aca-b42f-4c08-aada-130ee1be3799",
+          "comment": "Error message must not reveal whether the account exists",
+          "command": "assertText",
+          "target": "css=.border-danger\\/40",
+          "targets": [],
+          "value": "*Invalid email address or password*"
+        }
+      ]
+    },
+    {
+      "id": "0e649854-67fd-4564-9354-d0f5085a30ab",
+      "name": "TC-03 Empty credentials are validated client side",
+      "commands": [
+        {
+          "id": "4a50536e-d747-4c94-8461-d9a775a26262",
+          "comment": "",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a5da5ebc-9ead-4590-87b4-33aa08ad87a5",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "54615e84-000f-4027-bf19-b0b98f454a9c",
+          "comment": "Submit with both fields blank",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "6cb2f422-3b5a-4c0e-b7b2-b281406d52fb",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "css=.field-error",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "d617d90e-a581-4f76-bb1a-604291ec2f71",
+          "comment": "Inline validation messages appear",
+          "command": "assertElementPresent",
+          "target": "css=.field-error",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "92b0da29-2343-4de3-8f7a-25a58a761a84",
+      "name": "TC-04 Dashboard loads live statistics",
+      "commands": [
+        {
+          "id": "bd2cd75f-4501-420f-b0f7-dfe27320907e",
+          "comment": "Navigate to the login page",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "67397ed0-1172-4983-a9b9-70847899f000",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "7ec82135-f843-40b2-b2eb-72250d51867b",
+          "comment": "Enter the analyst email",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "f51fe26d-e0fb-4ba8-8857-9725d083d6db",
+          "comment": "Enter the password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "admin123"
+        },
+        {
+          "id": "79343126-7112-47b4-9708-55a68e121c9d",
+          "comment": "Submit the sign-in form",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ab78384b-f861-4fd6-ae60-512df6aa8f9b",
+          "comment": "Wait for the console to load",
+          "command": "waitForElementPresent",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "f4179403-2486-40da-87b5-be3141007972",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "css=.panel",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "b5242e9f-744b-47a7-b1c3-97715d3a431b",
+          "comment": "",
+          "command": "assertText",
+          "target": "css=h1",
+          "targets": [],
+          "value": "Security Overview"
+        },
+        {
+          "id": "67ec2730-c357-43ad-9456-cdf26c128f08",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Total Events')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "1a2eedc5-2aad-4a1e-bca9-33f4f2943a2d",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Threats Detected')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0c3c8845-ca97-475e-819b-49c098c3052d",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Critical Alerts')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "eb2a8cf0-92cf-4106-9c81-bcdcbf16a877",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Active Incidents')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "919f2db3-8b5f-4db2-b75f-b00e877d7153",
+          "comment": "Chart canvases are rendered from API data",
+          "command": "assertElementPresent",
+          "target": "css=.recharts-surface",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "f6d0f327-413f-496c-bec2-d6e3d2eb2f15",
+      "name": "TC-05 Threat detection classifies a brute-force event",
+      "commands": [
+        {
+          "id": "43717e61-1ed3-4ca9-8209-0575f4bc7c00",
+          "comment": "Navigate to the login page",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "96da9d42-df05-466e-b958-c8f46a19a584",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "64b4e0f4-0524-4d93-a3b1-946e413dd867",
+          "comment": "Enter the analyst email",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "4f859f78-f9b3-48f7-a13f-bcdb8654c6d3",
+          "comment": "Enter the password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "admin123"
+        },
+        {
+          "id": "0cd1f5ac-de3d-4ac4-bd5d-080b4d81dfa7",
+          "comment": "Submit the sign-in form",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "f8f203bd-8412-4dc0-934f-160a595ddc50",
+          "comment": "Wait for the console to load",
+          "command": "waitForElementPresent",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "d966d288-d57f-4a05-aecf-a6f995cd6bdd",
+          "comment": "",
+          "command": "click",
+          "target": "linkText=Threat Detection",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "570401e6-f336-40b2-915b-712d3ee50491",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "xpath=//button[contains(.,'Repeated failed SSH logins')]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "eabfc2b3-737f-4c9b-a614-67c19b03ae29",
+          "comment": "Load the prepared brute-force sample",
+          "command": "click",
+          "target": "xpath=//button[contains(.,'Repeated failed SSH logins')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0cfcddae-413d-4d17-9021-a2349289f315",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//button[contains(.,'Analyze Threat')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ff55eefe-a7cd-4454-a8fe-91aaec0dd4b3",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "xpath=//*[contains(text(),'Brute Force Attempt')]",
+          "targets": [],
+          "value": "30000"
+        },
+        {
+          "id": "52acd610-a49a-41f1-9b87-f752476393ab",
+          "comment": "Severity band is CRITICAL",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'CRITICAL')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "fe0d9192-bdf0-4770-b0d7-c8f293c995c1",
+          "comment": "Explainable reasons are displayed",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Why the engine reached this verdict')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a361d7cd-eb07-4bf7-828c-d32bf7ba035d",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Recommended defensive action')]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "f4268377-38cd-4e6b-8437-55acd01f0e76",
+      "name": "TC-06 Invalid IP address is rejected with a field error",
+      "commands": [
+        {
+          "id": "5ca862ac-4643-4fd5-89cd-a835bfa2b503",
+          "comment": "Navigate to the login page",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "bee5c3b1-3fab-417d-88ac-ccce6e42dfc8",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "60400b03-20bd-4736-9553-833244b5d2a4",
+          "comment": "Enter the analyst email",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "a1c41851-18f3-451f-a3d5-b42d7f3704f1",
+          "comment": "Enter the password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "admin123"
+        },
+        {
+          "id": "96b4b718-f440-4138-9755-65a249683d27",
+          "comment": "Submit the sign-in form",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a58c0582-4bb3-4c17-841e-55e273a2be23",
+          "comment": "Wait for the console to load",
+          "command": "waitForElementPresent",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "f7d33f3e-cca8-47d2-aadd-d100d87119fa",
+          "comment": "",
+          "command": "click",
+          "target": "linkText=Threat Detection",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "3de7f0d6-436f-4b0f-a276-4a8ffa6d6fa4",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "css=input.mono",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "7ab5e1e0-304f-49e2-8c2c-9df309d794f3",
+          "comment": "Enter a malformed IPv4 address",
+          "command": "type",
+          "target": "css=input.mono",
+          "targets": [],
+          "value": "999.999.1.1"
+        },
+        {
+          "id": "692363a7-3e41-49a5-ac91-55afdd1d99bc",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//button[contains(.,'Analyze Threat')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "d89a50f5-3a8a-4d39-8e10-934543086c74",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "css=.field-error",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "ead8636e-ca8e-44b4-9b96-41bb6f93075c",
+          "comment": "The offending input is highlighted",
+          "command": "assertElementPresent",
+          "target": "css=.field-input-error",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "86d94fd1-554e-42e1-8a73-1cfb27871b17",
+      "name": "TC-07 Alerts page filters by severity",
+      "commands": [
+        {
+          "id": "cd22ed5f-6ce9-43ec-a9e7-dae7ef192f54",
+          "comment": "Navigate to the login page",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a15afb6e-0462-4a7b-9752-a8de61e05c92",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "75edfd49-173f-4f6d-88f5-401030d85498",
+          "comment": "Enter the analyst email",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "143db345-ac20-4495-9742-0e246616bd4b",
+          "comment": "Enter the password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "admin123"
+        },
+        {
+          "id": "98a02c61-f7a2-4da6-9bcb-7916705108ba",
+          "comment": "Submit the sign-in form",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "95356ee2-1d04-4d55-9a48-e8758a422e6a",
+          "comment": "Wait for the console to load",
+          "command": "waitForElementPresent",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "3eed9898-6559-4b5e-91ca-12cb792cc712",
+          "comment": "",
+          "command": "click",
+          "target": "linkText=Alerts",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ee8f1bb9-f778-459d-b087-16fe12fbfaaa",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "css=table",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "0732f5de-b139-4580-9b45-56c0e2eab74f",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//button[contains(.,'Filters')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "038b5ab4-a407-49c7-9483-db94dfddeaac",
+          "comment": "Filter the queue to CRITICAL",
+          "command": "select",
+          "target": "css=select",
+          "targets": [],
+          "value": "label=Critical"
+        },
+        {
+          "id": "4dd19ca3-5c6a-4c08-8a7e-cb6e61964c93",
+          "comment": "",
+          "command": "pause",
+          "target": "",
+          "targets": [],
+          "value": "2000"
+        },
+        {
+          "id": "7e3951a7-d29b-4d86-adbb-6db15db51876",
+          "comment": "Filtered rows are returned by the API",
+          "command": "assertElementPresent",
+          "target": "css=table tbody tr",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "17b14a65-7a4a-40eb-872f-504c1f8102ba",
+      "name": "TC-08 Incident lifecycle offers only legal transitions",
+      "commands": [
+        {
+          "id": "4bd44ab0-dfbf-457b-9b44-a41ffe6312d6",
+          "comment": "Navigate to the login page",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c97a0f8d-bd9f-4897-b9d7-33c80881fd06",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "760f7c22-2634-4b96-931b-1e3ec881a0a6",
+          "comment": "Enter the analyst email",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "59cbdf39-d69f-4445-bd43-80db1eaa2b77",
+          "comment": "Enter the password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "admin123"
+        },
+        {
+          "id": "83d12dca-26b4-42f9-8f9c-046c68fb6c01",
+          "comment": "Submit the sign-in form",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "e3c74ee0-c3eb-4ca8-affa-9505da3cb296",
+          "comment": "Wait for the console to load",
+          "command": "waitForElementPresent",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "a353ef43-684f-43e9-99e0-8cec2b653b90",
+          "comment": "",
+          "command": "click",
+          "target": "linkText=Incidents",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "b0c71ccb-60ba-429e-8a00-8ed297f5ca87",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "css=table tbody tr",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "b8d22bc2-9bee-4fa8-9960-4f4b235e2799",
+          "comment": "Open the first incident",
+          "command": "click",
+          "target": "css=table tbody tr:nth-child(1)",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9c5619a2-fc86-48f5-90c8-35fbc4f18d75",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "xpath=//*[contains(text(),'Incident lifecycle')]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "724947df-5cb2-4872-b3bf-5cac7e158d69",
+          "comment": "Only permitted transitions are rendered as buttons",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Available transitions')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9e043964-a0ca-44af-b1a2-c7b36a7971d0",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Status history')]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "11668a5b-2ccb-45d5-82b7-852e30d974af",
+      "name": "TC-09 Log analyzer accepts a CSV upload",
+      "commands": [
+        {
+          "id": "2bad9c7c-f011-459c-8d4e-981e22d5886d",
+          "comment": "Navigate to the login page",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "fd8f9f73-fcea-4cac-8a37-65216f3f18ce",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "52c70597-6d0e-412c-b463-6990407f4a0c",
+          "comment": "Enter the analyst email",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "5c72a401-b312-45c8-953e-8e77bf5fc251",
+          "comment": "Enter the password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "admin123"
+        },
+        {
+          "id": "aed6091e-186b-4b0a-af48-b19fc0279d88",
+          "comment": "Submit the sign-in form",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "e0323708-c85b-481f-9fd3-3672f44caa86",
+          "comment": "Wait for the console to load",
+          "command": "waitForElementPresent",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "28cc5865-ff78-4135-a05b-80a6e24c9bbf",
+          "comment": "",
+          "command": "click",
+          "target": "linkText=Log Analyzer",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "47610161-7daa-4bce-9df7-e33b0a9a5d28",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "css=input[type='file']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "a8c83ab3-ea5b-455d-9f8d-fa43aea6e8a7",
+          "comment": "Attach the 120-row sample log file",
+          "command": "type",
+          "target": "css=input[type='file']",
+          "targets": [],
+          "value": "C:/Users/lenovo/Downloads/software project/sample_data/sample_logs_mixed.csv"
+        },
+        {
+          "id": "d5e2c87d-bc52-4aa6-872a-eff0e563bd19",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//button[contains(.,'Analyze log file')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "473688ad-0595-48b3-ac14-fc11a78e4a5e",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "xpath=//*[contains(text(),'Ingestion summary')]",
+          "targets": [],
+          "value": "120000"
+        },
+        {
+          "id": "16acfe0d-6c9b-4a01-8f06-4d8eb179c45e",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Total records')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0eabf135-28c3-4e77-aa60-58569831e7de",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Suspicious')]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "3b8fde98-3f3b-4a8e-8995-a9756f8dc3ac",
+      "name": "TC-10 Report generation and listing",
+      "commands": [
+        {
+          "id": "6bd8f883-a8b5-4892-8e5b-2160910a0ee0",
+          "comment": "Navigate to the login page",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "6b252c60-0bae-43c6-b1fe-d8e2ec7aa78c",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1440x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "e4460d89-8162-4389-b5f9-11de7b545142",
+          "comment": "Enter the analyst email",
+          "command": "type",
+          "target": "id=email",
+          "targets": [],
+          "value": "admin@cyberguard.ai"
+        },
+        {
+          "id": "6ff22f5f-a553-4391-a751-23728af992fc",
+          "comment": "Enter the password",
+          "command": "type",
+          "target": "id=password",
+          "targets": [],
+          "value": "admin123"
+        },
+        {
+          "id": "435012bd-ec1f-4bbb-8035-7c31e85e1044",
+          "comment": "Submit the sign-in form",
+          "command": "click",
+          "target": "css=button[type='submit']",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a8f5f774-82e8-43bc-a0cb-22db1e097780",
+          "comment": "Wait for the console to load",
+          "command": "waitForElementPresent",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "88685bf3-1e2b-4ff2-9a48-b13ff6ff52fc",
+          "comment": "",
+          "command": "click",
+          "target": "linkText=Reports",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "6cf15d6c-cd87-4cb0-82e1-993b7bf2fbf8",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "xpath=//button[contains(.,'Generate Report')]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "c0df2dc8-afbf-4eda-a4e3-179cc3f3d7f0",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//button[contains(.,'Generate Report')]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "5ab4ac20-add0-45f4-9995-8500ccf78476",
+          "comment": "",
+          "command": "waitForElementPresent",
+          "target": "xpath=//*[contains(text(),'RPT-')]",
+          "targets": [],
+          "value": "30000"
+        },
+        {
+          "id": "4743b71c-7a48-4bf6-b03d-8588d33d4fb3",
+          "comment": "Report content includes derived recommendations",
+          "command": "assertElementPresent",
+          "target": "xpath=//*[contains(text(),'Recommendations')]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "fcba1041-2b42-4f9a-8086-3d2589d4161e",
+      "name": "Experiment 9 - Functional Suite",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 600,
+      "tests": [
+        "11100092-4af5-4b64-bac5-be310b3f35d9",
+        "67c29900-953e-4cab-ab89-e4e196319e7b",
+        "0e649854-67fd-4564-9354-d0f5085a30ab",
+        "92b0da29-2343-4de3-8f7a-25a58a761a84",
+        "f6d0f327-413f-496c-bec2-d6e3d2eb2f15",
+        "f4268377-38cd-4e6b-8437-55acd01f0e76",
+        "86d94fd1-554e-42e1-8a73-1cfb27871b17",
+        "17b14a65-7a4a-40eb-872f-504c1f8102ba",
+        "11668a5b-2ccb-45d5-82b7-852e30d974af",
+        "3b8fde98-3f3b-4a8e-8995-a9756f8dc3ac"
+      ]
+    }
+  ],
+  "urls": [
+    "http://localhost:5173"
+  ],
+  "plugins": []
+}

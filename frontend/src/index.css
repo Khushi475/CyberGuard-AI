@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-navy-950 text-slate-200 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    background-image:
+      radial-gradient(1100px 500px at 12% -8%, rgba(34, 211, 238, 0.07), transparent 60%),
+      radial-gradient(900px 480px at 92% 4%, rgba(56, 189, 248, 0.06), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  /* Visible focus ring for keyboard users (accessibility / NFR-03). */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent/70 ring-offset-2 ring-offset-navy-950;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-navy-600;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-navy-500;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  /* Glass panel: the single surface primitive every card is built on. */
+  .panel {
+    @apply rounded-xl border border-white/10 bg-navy-900/70 shadow-panel backdrop-blur-sm;
+  }
+
+  .panel-hover {
+    @apply transition-all duration-200 hover:border-accent/35 hover:bg-navy-850/80;
+  }
+
+  .panel-header {
+    @apply flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4;
+  }
+
+  .panel-title {
+    @apply text-sm font-semibold tracking-wide text-slate-100;
+  }
+
+  .panel-subtitle {
+    @apply text-xs text-slate-400;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400;
+  }
+
+  .field-input {
+    @apply w-full rounded-lg border border-white/10 bg-navy-950/70 px-3 py-2.5 text-sm text-slate-100
+      placeholder:text-slate-500 transition-colors
+      focus:border-accent/60 focus:bg-navy-950 focus:outline-none focus:ring-1 focus:ring-accent/40
+      disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .field-input-error {
+    @apply border-danger/70 focus:border-danger focus:ring-danger/40;
+  }
+
+  .field-hint {
+    @apply mt-1 text-xs text-slate-500;
+  }
+
+  .field-error {
+    @apply mt-1 flex items-center gap-1 text-xs text-danger;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium
+      transition-all duration-150 focus-visible:ring-2 focus-visible:ring-accent/70
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-navy-950 hover:bg-accent-soft active:scale-[0.985];
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/15 bg-navy-800/80 text-slate-200 hover:border-accent/40 hover:bg-navy-700;
+  }
+
+  .btn-ghost {
+    @apply btn text-slate-300 hover:bg-white/5 hover:text-slate-100;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger/90 text-white hover:bg-danger;
+  }
+
+  .btn-success {
+    @apply btn bg-safe/90 text-navy-950 hover:bg-safe;
+  }
+
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  .table-wrap {
+    @apply w-full overflow-x-auto;
+  }
+
+  .data-table {
+    @apply w-full min-w-[720px] border-collapse text-left text-sm;
+  }
+
+  .data-table thead th {
+    @apply whitespace-nowrap border-b border-white/10 bg-navy-850/60 px-4 py-3 text-xs font-semibold
+      uppercase tracking-wider text-slate-400;
+  }
+
+  .data-table tbody td {
+    @apply border-b border-white/[0.06] px-4 py-3 text-slate-300 align-middle;
+  }
+
+  .data-table tbody tr {
+    @apply transition-colors hover:bg-white/[0.035];
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs font-medium whitespace-nowrap;
+  }
+
+  .mono {
+    @apply font-mono text-[0.8rem] tracking-tight;
+  }
+
+  .skeleton {
+    @apply rounded-md bg-navy-800/80;
+    background-image: linear-gradient(
+      90deg,
+      rgba(23, 37, 63, 0) 0%,
+      rgba(42, 61, 99, 0.6) 50%,
+      rgba(23, 37, 63, 0) 100%
+    );
+    background-size: 500px 100%;
+    background-repeat: no-repeat;
+    @apply animate-shimmer;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-400
+      transition-all duration-150 hover:bg-white/5 hover:text-slate-100;
+  }
+
+  .nav-link-active {
+    @apply bg-accent/15 text-accent shadow-[inset_2px_0_0_0_theme(colors.accent.DEFAULT)];
+  }
+}

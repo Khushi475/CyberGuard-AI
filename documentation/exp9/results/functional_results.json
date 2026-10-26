@@ -1,0 +1,101 @@
+{
+  "executed_at": "2026-09-22 11:04:42",
+  "environment": "Windows 11, Chromium (Playwright), viewport 1440x900",
+  "application": "http://localhost:5173",
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "pass_rate": 100.0,
+  "cases": [
+    {
+      "id": "TC-01",
+      "title": "Valid login is accepted",
+      "expected": "Dashboard loads; session established",
+      "actual": "Signed in; dashboard rendered with heading 'Security Overview'",
+      "status": "PASS",
+      "ms": 6190.2,
+      "screenshot": "TC01_valid_login.png"
+    },
+    {
+      "id": "TC-02",
+      "title": "Invalid password is rejected",
+      "expected": "HTTP 401, generic error, stays on login",
+      "actual": "HTTP 401; message 'Invalid email address or password.'; stayed on /login",
+      "status": "PASS",
+      "ms": 1559.9,
+      "screenshot": "TC02_invalid_password.png"
+    },
+    {
+      "id": "TC-03",
+      "title": "Empty credentials are validated",
+      "expected": "Inline field errors, no request sent",
+      "actual": "2 inline validation messages shown; no request sent",
+      "status": "PASS",
+      "ms": 1317.7,
+      "screenshot": "TC03_empty_fields.png"
+    },
+    {
+      "id": "TC-04",
+      "title": "Dashboard loads live statistics",
+      "expected": "KPI tiles and charts populated from API",
+      "actual": "4 KPI tiles present; 25 chart canvases rendered from API data",
+      "status": "PASS",
+      "ms": 7945.1,
+      "screenshot": "TC04_dashboard.png"
+    },
+    {
+      "id": "TC-05",
+      "title": "Brute-force event is classified",
+      "expected": "Brute Force Attempt, CRITICAL, with reasons",
+      "actual": "Classified 'Brute Force Attempt', severity CRITICAL, reasons and action displayed",
+      "status": "PASS",
+      "ms": 6601.0,
+      "screenshot": "TC05_detection_result.png"
+    },
+    {
+      "id": "TC-06",
+      "title": "Invalid IP address is rejected",
+      "expected": "422 with field-level validation message",
+      "actual": "Rejected with field-level error: 'source_ip must be a valid IPv4/IPv6 address (received '999.999.1.1').'",
+      "status": "PASS",
+      "ms": 3946.4,
+      "screenshot": "TC06_invalid_input.png"
+    },
+    {
+      "id": "TC-07",
+      "title": "Alerts filter by severity",
+      "expected": "Only CRITICAL rows returned",
+      "actual": "Filter applied server-side; 15 rows before, 15 CRITICAL rows after",
+      "status": "PASS",
+      "ms": 7128.7,
+      "screenshot": "TC07_alert_filter.png"
+    },
+    {
+      "id": "TC-08",
+      "title": "Incident shows legal transitions only",
+      "expected": "Lifecycle tracker and permitted actions",
+      "actual": "Lifecycle tracker shown; only permitted transitions offered; history rendered",
+      "status": "PASS",
+      "ms": 5699.0,
+      "screenshot": "TC08_incident_lifecycle.png"
+    },
+    {
+      "id": "TC-09",
+      "title": "CSV log upload is analysed",
+      "expected": "120 records analysed with severity split",
+      "actual": "120-row CSV parsed, validated, analysed and summarised by severity",
+      "status": "PASS",
+      "ms": 8033.8,
+      "screenshot": "TC09_log_analyzer.png"
+    },
+    {
+      "id": "TC-10",
+      "title": "Report generation",
+      "expected": "Report stored with recommendations",
+      "actual": "Report generated with an RPT- code and data-derived recommendations",
+      "status": "PASS",
+      "ms": 6191.7,
+      "screenshot": "TC10_report.png"
+    }
+  ]
+}
